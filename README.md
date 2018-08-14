@@ -1,2 +1,2 @@
 # bt-pizza
-Pizzaria Grupinis Darbas
+Pizzaria Komandinis Darbas
