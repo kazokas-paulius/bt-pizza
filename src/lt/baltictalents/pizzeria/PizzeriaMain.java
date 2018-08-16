@@ -2,6 +2,7 @@ package lt.baltictalents.pizzeria;
 
 import java.util.Scanner;
 import java.io.*;
+import java.io.File;
 
 public class PizzeriaMain {
 
@@ -20,48 +21,66 @@ public class PizzeriaMain {
         switch (choises) {
             case 1:
                 System.out.println("\nMaistas");
-                String maistasPath = "C:\\Users\\pauli\\OneDrive\\Desktop\\Kraken\\JAVA\\Baltic-Talents-Java\\bt-pizza\\src\\Maistas";
-                File mfile = new File(maistasPath);
-                String mAbsoluteFile = mfile.getAbsolutePath();
-                BufferedReader mBr = new BufferedReader(new FileReader(mAbsoluteFile));
+                File mfile = new File("resources/Maistas");
+                BufferedReader mBr = new BufferedReader(new FileReader(mfile));
                 String mContent;
 
                 while ((mContent = mBr.readLine()) != null) {
                     System.out.println(mContent);
                 }
-//                System.out.print("\nKą norėtumėte įsidėti į krepšelį?");
-//                choises = caseInput.nextInt();
+                System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
+                System.out.println("(6 -> Sugrįžti atgal)");
+                choises = caseInput.nextInt();
+
+                switch(choises){
+                    case 1:
+                        System.out.println("Pasirinktas patiekalas: Pica");
+                        break;
+                    case 2:
+                        System.out.println("Pasirinktas patiekalas: Salotos");
+                        break;
+                    case 3:
+                        System.out.println("Pasirinktas patiekalas: Tortilija");
+                        break;
+                    case 4:
+                        System.out.println("Pasirinktas patiekalas: Ledai");
+                        break;
+                    case 5:
+                        System.out.println("Pasirinktas patiekalas: Sriuba");
+                        break;
+                    case 6:
+                        System.out.println("Sugrįžote Atgal");
+                        main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
+                }
                 break;
             case 2:
                 System.out.println("\nGėrimai");
-                String filePath = "C:\\Users\\pauli\\OneDrive\\Desktop\\Kraken\\JAVA\\Baltic-Talents-Java\\bt-pizza\\src\\Gerimai";
-                File file = new File(filePath);
-                String absoluteFile = file.getAbsolutePath();
-                BufferedReader gBr = new BufferedReader(new FileReader(absoluteFile));
+                File gfile = new File("resources/Gerimai");
+                BufferedReader gBr = new BufferedReader(new FileReader(gfile));
                 String gContent;
 
                 while ((gContent = gBr.readLine()) != null) {
                     System.out.println(gContent);
                 }
-                System.out.print("\nKą norėtumėte įsidėti į krepšelį?");
+                System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
+                System.out.println("(6 -> Sugrįžti atgal)");
                 choises = caseInput.nextInt();
-                caseInput.nextLine();
 
                 switch (choises) {
                     case 1:
-                        System.out.println("Pridėtas Alus");
+                        System.out.println("Pasirinktas gėrimas: Alus");
                         break;
                     case 2:
-                        System.out.println("Pridėtas Gira");
+                        System.out.println("Pasirinktas gėrimas: Gira");
                         break;
                     case 3:
-                        System.out.println("Pridėtas Mineralinis");
+                        System.out.println("Pasirinktas gėrimas: Mineralinis");
                         break;
                     case 4:
-                        System.out.println("Pridėtas Vanduo");
+                        System.out.println("Pasirinktas gėrimas: Vanduo");
                         break;
                     case 5:
-                        System.out.println("Pridėtas Sultys");
+                        System.out.println("Pasirinktas gėrimas: Sultys");
                         break;
                     case 6:
                         System.out.println("Sugrįžote Atgal");
@@ -72,7 +91,7 @@ public class PizzeriaMain {
                 System.out.println("Coming soon");
             case 4:
                 System.out.println("Išėjote iš užsakymo");
-//                return;
+                break;
         }
     }
 }
