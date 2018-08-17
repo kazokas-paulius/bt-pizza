@@ -1,8 +1,11 @@
 package lt.baltictalents.pizzeria;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.*;
 import java.io.File;
+import java.util.List;
+import java.util.Arrays;
 
 public class PizzeriaMain {
 
@@ -27,7 +30,13 @@ public class PizzeriaMain {
 
                 while ((mContent = mBr.readLine()) != null) {
                     System.out.println(mContent);
+                    String[] mNeimai = mContent.split(" ");
+                    List<String> mNames = Arrays.asList(mNeimai[1]);
+                    List<String> mPrices = Arrays.asList(mNeimai[mNeimai.length-1]);
+                    System.out.println(mNames);
+                    System.out.println(mPrices);
                 }
+
                 System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
                 System.out.println("(6 -> Sugrįžti atgal)");
                 choises = caseInput.nextInt();
@@ -59,9 +68,15 @@ public class PizzeriaMain {
                 BufferedReader gBr = new BufferedReader(new FileReader(gfile));
                 String gContent;
 
-                while ((gContent = gBr.readLine()) != null) {
-                    System.out.println(gContent);
+                while ((mContent = gBr.readLine()) != null) {
+                    System.out.println(mContent);
+                    String[] gNeimai = mContent.split(" ");
+                    List<String> gNames = Arrays.asList(gNeimai[1]);
+                    List<String> gPrices = Arrays.asList(gNeimai[gNeimai.length-1]);
+                    System.out.println(gNames);
+                    System.out.println(gPrices);
                 }
+
                 System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
                 System.out.println("(6 -> Sugrįžti atgal)");
                 choises = caseInput.nextInt();
