@@ -1,10 +1,15 @@
 package lt.baltictalents.pizzeria;
 
+import java.util.Collections;
 import java.util.Scanner;
 import java.io.*;
 import java.io.File;
 import java.util.List;
-import java.util.Arrays;
+//august 20 - padariau kad galetum jumpint i maina po kiekvieno pasirinkimo,
+//pašalinau warningus ir typos,
+//pakeiciau Arrays.asList i Collections.singletonList(), paaiskinimas apacioj rasi kazkur.
+//kazkas nepatinka keisk ,tik buk gerutis pakomentuok naujienas, daug laiko prireike kad susigaudyt kur kas
+//del masyvu tai dar nesugalvojau kaip padaryt, ryt galesim pagalvot draugiskai
 
 public class PizzeriaMain {
 
@@ -14,9 +19,9 @@ public class PizzeriaMain {
         mM.mainMeniuMeniu();
 
         Scanner caseInput = new Scanner(System.in);
-        int choises = caseInput.nextInt();
+        int choices = caseInput.nextInt();
 
-        switch (choises) {
+        switch (choices) {
             case 1:
                 maistoMeniu();
                 break;
@@ -32,8 +37,7 @@ public class PizzeriaMain {
         }
     }
 
-    static void maistoMeniu() throws IOException {
-
+    private static void maistoMeniu() throws IOException {
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nMaistas");
@@ -44,31 +48,39 @@ public class PizzeriaMain {
         while ((mContent = mBr.readLine()) != null) {
             System.out.println(mContent);
             String[] mNeimai = mContent.split(" ");
-            List<String> mNames = Arrays.asList(mNeimai[1]);
-            List<String> mPrices = Arrays.asList(mNeimai[mNeimai.length-1]);
+            List<String> mNames = Collections.singletonList(mNeimai[1]);
+            //Reports any calls to Arrays.asList()
+            // with zero arguments or only one argument. Such calls could be replaced with either a
+            // call to Collections.singletonList() or Collections.emptyList() which will save some memory.
+            List<String> mPrices = Collections.singletonList(mNeimai[mNeimai.length - 1]);
             System.out.println(mNames);
             System.out.println(mPrices);
         }
 
         System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
         System.out.println("(6 -> Sugrįžti atgal)");
-        int choises = caseInput.nextInt();
+        int choices = caseInput.nextInt();
 
-        switch(choises){
+        switch (choices) {
             case 1:
                 System.out.println("Pasirinktas patiekalas: Pica");
+                main(null);
                 break;
             case 2:
                 System.out.println("Pasirinktas patiekalas: Salotos");
+                main(null);
                 break;
             case 3:
                 System.out.println("Pasirinktas patiekalas: Tortilija");
+                main(null);
                 break;
             case 4:
                 System.out.println("Pasirinktas patiekalas: Ledai");
+                main(null);
                 break;
             case 5:
                 System.out.println("Pasirinktas patiekalas: Sriuba");
+                main(null);
                 break;
             case 6:
                 System.out.println("Sugrįžote Atgal");
@@ -76,7 +88,7 @@ public class PizzeriaMain {
         }
     }
 
-    static void gerimuMeniu() throws IOException {
+    private static void gerimuMeniu() throws IOException {
 
         Scanner caseInput = new Scanner(System.in);
 
@@ -88,31 +100,36 @@ public class PizzeriaMain {
         while ((gContent = gBr.readLine()) != null) {
             System.out.println(gContent);
             String[] gNeimai = gContent.split(" ");
-            List<String> gNames = Arrays.asList(gNeimai[1]);
-            List<String> gPrices = Arrays.asList(gNeimai[gNeimai.length-1]);
+            List<String> gNames = Collections.singletonList(gNeimai[1]);
+            List<String> gPrices = Collections.singletonList(gNeimai[gNeimai.length - 1]);
             System.out.println(gNames);
             System.out.println(gPrices);
         }
 
         System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
         System.out.println("(6 -> Sugrįžti atgal)");
-        int choises = caseInput.nextInt();
+        int choices = caseInput.nextInt();
 
-        switch (choises) {
+        switch (choices) {
             case 1:
                 System.out.println("Pasirinktas gėrimas: Alus");
+                main(null);
                 break;
             case 2:
                 System.out.println("Pasirinktas gėrimas: Gira");
+                main(null);
                 break;
             case 3:
                 System.out.println("Pasirinktas gėrimas: Mineralinis");
+                main(null);
                 break;
             case 4:
                 System.out.println("Pasirinktas gėrimas: Vanduo");
+                main(null);
                 break;
             case 5:
                 System.out.println("Pasirinktas gėrimas: Sultys");
+                main(null);
                 break;
             case 6:
                 System.out.println("Sugrįžote Atgal");
@@ -121,8 +138,8 @@ public class PizzeriaMain {
     }
 
 
-    static class mainMenu{
-        void mainMeniuMeniu(){
+    static class mainMenu {
+        void mainMeniuMeniu() {
             System.out.println("Meniu\n");
             System.out.println("1 -> Maistas");
             System.out.println("2 -> Gerimai");
