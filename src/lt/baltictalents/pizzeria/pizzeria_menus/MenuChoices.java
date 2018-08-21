@@ -73,6 +73,10 @@ public class MenuChoices {
             case 6:
                 System.out.println("Your order : ");
                 PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
+            default:
+                System.out.println("Invalid. Input different number");
+                foodMenu();
+
         }
     }
 
@@ -111,6 +115,9 @@ public class MenuChoices {
             case 6:
                 System.out.println("Your order : ");
                 PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
+            default:
+                System.out.println("Invalid. Input different number");
+                drinksMenu();
         }
     }
 }
