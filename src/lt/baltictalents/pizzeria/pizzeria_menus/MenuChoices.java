@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readDrinksTxt;
-import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMaistasTxt;
+import static lt.baltictalents.pizzeria.read_txt.TxtReader.readFoodTxt;
 
 public class MenuChoices {
 
-    public static void mainMeniuMeniu() {
-        System.out.println("Meniu\n");
-        System.out.println("1 -> Maistas");
-        System.out.println("2 -> Gerimai");
-        System.out.println("3 -> Čekiukas");
-        System.out.println("4 -> Išeiti\n");
-        System.out.print("Pasirinkimas:");
+    public static void mainMenuMenu() {
+        System.out.println("Menu\n");
+        System.out.println("1 -> Food");
+        System.out.println("2 -> Drinks");
+        System.out.println("3 -> Check");
+        System.out.println("4 -> Cancel order\n");
+        System.out.print("Input number:");
     }
 
     public static void mainMenuChoices() throws IOException {
@@ -25,91 +25,91 @@ public class MenuChoices {
 
         switch (choices) {
             case 1:
-                maistoMeniu();
+                foodMenu();
                 break;
             case 2:
-                gerimuMeniu();
+                drinksMenu();
                 break;
             case 3:
                 System.out.println("Coming soon");
                 break;
             case 4:
-                System.out.println("Išėjote iš užsakymo");
+                System.out.println("Order is canceled. Thanks for choosing us!");
                 break;
         }
     }
 
-    private static void maistoMeniu() throws IOException {
+    private static void foodMenu() throws IOException {
         Scanner caseInput = new Scanner(System.in);
 
-        System.out.println("\nMaistas");
-        readMaistasTxt();
+        System.out.println("\nFood");
+        readFoodTxt();
 
-        System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
-        System.out.println("(6 -> Sugrįžti atgal)");
+        System.out.print("\nWhat would you like to oder?\n");
+        System.out.println("(6 -> Go back )");
         int choices = caseInput.nextInt();
 
         switch (choices) {
             case 1:
-                System.out.println("Pasirinktas patiekalas: Pica");
+                System.out.println("You ordered : Pizza");
                 PizzeriaMain.main(null);
                 break;
             case 2:
-                System.out.println("Pasirinktas patiekalas: Salotos");
+                System.out.println("You ordered : Salad");
                 PizzeriaMain.main(null);
                 break;
             case 3:
-                System.out.println("Pasirinktas patiekalas: Tortilija");
+                System.out.println("You ordered : Tortilla");
                 PizzeriaMain.main(null);
                 break;
             case 4:
-                System.out.println("Pasirinktas patiekalas: Ledai");
+                System.out.println("You ordered : Ice cream");
                 PizzeriaMain.main(null);
                 break;
             case 5:
-                System.out.println("Pasirinktas patiekalas: Sriuba");
+                System.out.println("You ordered : Soup");
                 PizzeriaMain.main(null);
                 break;
             case 6:
-                System.out.println("Sugrįžote Atgal");
+                System.out.println("Your order : ");
                 PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
         }
     }
 
-    private static void gerimuMeniu() throws IOException {
+    private static void drinksMenu() throws IOException {
 
         Scanner caseInput = new Scanner(System.in);
 
-        System.out.println("\nGėrimai");
+        System.out.println("\nDrinks");
         readDrinksTxt();
 
-        System.out.print("\nKą norėtumėte įsidėti į krepšelį?\n");
-        System.out.println("(6 -> Sugrįžti atgal)");
+        System.out.print("\nWhat would you like to order?\n");
+        System.out.println("(6 -> Go back )");
         int choices = caseInput.nextInt();
 
         switch (choices) {
             case 1:
-                System.out.println("Pasirinktas gėrimas: Alus");
+                System.out.println("You ordered : Beer");
                 PizzeriaMain.main(null);
                 break;
             case 2:
-                System.out.println("Pasirinktas gėrimas: Gira");
+                System.out.println("You ordered : Root beer");
                 PizzeriaMain.main(null);
                 break;
             case 3:
-                System.out.println("Pasirinktas gėrimas: Mineralinis");
+                System.out.println("You ordered : Sparkling water");
                 PizzeriaMain.main(null);
                 break;
             case 4:
-                System.out.println("Pasirinktas gėrimas: Vanduo");
+                System.out.println("You ordered : Still water");
                 PizzeriaMain.main(null);
                 break;
             case 5:
-                System.out.println("Pasirinktas gėrimas: Sultys");
+                System.out.println("You ordered : Juice");
                 PizzeriaMain.main(null);
                 break;
             case 6:
-                System.out.println("Sugrįžote Atgal");
+                System.out.println("Your order : ");
                 PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
         }
     }

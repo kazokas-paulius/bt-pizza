@@ -10,7 +10,7 @@ public class PizzeriaMain {
 
     public static void main(String[] args) throws IOException {
 
-        MenuChoices.mainMeniuMeniu();
+        MenuChoices.mainMenuMenu();
         mainMenuChoices();
     }
 }
