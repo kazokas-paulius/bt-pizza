@@ -7,10 +7,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-//Reports any calls to Arrays.asList()
-// with zero arguments or only one argument. Such calls could be replaced with either a
-// call to Collections.singletonList() or Collections.emptyList() which will save some memory.
-
 public class TxtReader {
 
     public static void readMaistasTxt() throws IOException {
@@ -28,7 +24,7 @@ public class TxtReader {
         }
     }
 
-    public static void readDrinksTxt() throws IOException{
+    public static void readDrinksTxt() throws IOException {
         File gFile = new File("resources/Gerimai");
         BufferedReader gBr = new BufferedReader(new FileReader(gFile));
         String gContent;

@@ -8,7 +8,7 @@ import java.util.Scanner;
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readDrinksTxt;
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMaistasTxt;
 
-public class MenuChoices{
+public class MenuChoices {
 
     public static void mainMeniuMeniu() {
         System.out.println("Meniu\n");
