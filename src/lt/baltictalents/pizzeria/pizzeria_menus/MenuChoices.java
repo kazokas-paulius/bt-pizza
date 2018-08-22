@@ -5,8 +5,7 @@ import lt.baltictalents.pizzeria.PizzeriaMain;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static lt.baltictalents.pizzeria.read_txt.TxtReader.readDrinksTxt;
-import static lt.baltictalents.pizzeria.read_txt.TxtReader.readFoodTxt;
+import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMeniuTxt;
 
 public class MenuChoices {
 
@@ -22,7 +21,6 @@ public class MenuChoices {
     public static void mainMenuChoices() throws IOException {
         Scanner caseInput = new Scanner(System.in);
         int choices = caseInput.nextInt();
-
         switch (choices) {
             case 1:
                 foodMenu();
@@ -43,49 +41,48 @@ public class MenuChoices {
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nFood");
-        readFoodTxt();
+        readMeniuTxt("resources/Food");
 
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("(6 -> Go back )");
         int choices = caseInput.nextInt();
-
-        switch (choices) {
-            case 1:
-                System.out.println("You ordered : Pizza");
-                PizzeriaMain.main(null);
-                break;
-            case 2:
-                System.out.println("You ordered : Salad");
-                PizzeriaMain.main(null);
-                break;
-            case 3:
-                System.out.println("You ordered : Tortilla");
-                PizzeriaMain.main(null);
-                break;
-            case 4:
-                System.out.println("You ordered : Ice cream");
-                PizzeriaMain.main(null);
-                break;
-            case 5:
-                System.out.println("You ordered : Soup");
-                PizzeriaMain.main(null);
-                break;
-            case 6:
-                System.out.println("Your order : ");
-                PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
-            default:
-                System.out.println("Invalid. Input different number");
-                foodMenu();
-
-        }
+            switch (choices) {
+                case 1:
+                    System.out.println("You ordered : Pizza");
+                    PizzeriaMain.main(null);
+                    break;
+                case 2:
+                    System.out.println("You ordered : Salad");
+                    PizzeriaMain.main(null);
+                    break;
+                case 3:
+                    System.out.println("You ordered : Tortilla");
+                    PizzeriaMain.main(null);
+                    break;
+                case 4:
+                    System.out.println("You ordered : Ice cream");
+                    PizzeriaMain.main(null);
+                    break;
+                case 5:
+                    System.out.println("You ordered : Soup");
+                    PizzeriaMain.main(null);
+                    break;
+                case 6:
+                    System.out.println("Your order : ");
+                    PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
+                default:
+                    System.out.println("Invalid. Input different number");
+                    foodMenu();
+            }
     }
+
 
     private static void drinksMenu() throws IOException {
 
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nDrinks");
-        readDrinksTxt();
+        readMeniuTxt("resources/Drinks");
 
         System.out.print("\nWhat would you like to order?\n");
         System.out.println("(6 -> Go back )");
