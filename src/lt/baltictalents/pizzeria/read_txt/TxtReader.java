@@ -1,14 +1,10 @@
 package lt.baltictalents.pizzeria.read_txt;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class TxtReader {
-    public static void readMeniuTxt(String fPath) throws IOException{
+    public static void readMenuTxt(String fPath) throws IOException{
         File fTarget = new File(fPath);
         BufferedReader bfr = new BufferedReader(new FileReader(fTarget));
         String fContent;

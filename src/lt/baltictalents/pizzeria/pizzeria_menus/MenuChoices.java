@@ -5,7 +5,7 @@ import lt.baltictalents.pizzeria.PizzeriaMain;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMeniuTxt;
+import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
 
@@ -41,7 +41,7 @@ public class MenuChoices {
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nFood");
-        readMeniuTxt("resources/Food");
+        readMenuTxt("resources/Food");
 
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("(6 -> Go back )");
@@ -82,7 +82,7 @@ public class MenuChoices {
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nDrinks");
-        readMeniuTxt("resources/Drinks");
+        readMenuTxt("resources/Drinks");
 
         System.out.print("\nWhat would you like to order?\n");
         System.out.println("(6 -> Go back )");
