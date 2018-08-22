@@ -15,7 +15,7 @@ public class TxtReader {
 
         while ((fContent = bfr.readLine()) != null) {
             System.out.println(fContent);
-            String[] mName = fContent.split(" ");
+            String[] mName = fContent.split("##");
             List<String> mNames = Collections.singletonList(mName[1]);
             List<String> mPrices = Collections.singletonList(mName[mName.length - 1]);
             System.out.println(mNames);

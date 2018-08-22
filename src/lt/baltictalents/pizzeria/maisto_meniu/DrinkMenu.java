@@ -2,6 +2,6 @@ package lt.baltictalents.pizzeria.maisto_meniu;
 
 public abstract class DrinkMenu {
 
-    abstract void alcoholicDrinks();
-    abstract void nonAlcoholicDrinks();
+    public abstract void alcoholicDrinks();
+    public abstract void nonAlcoholicDrinks();
 }
