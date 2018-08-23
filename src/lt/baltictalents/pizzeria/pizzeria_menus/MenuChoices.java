@@ -1,19 +1,35 @@
 package lt.baltictalents.pizzeria.pizzeria_menus;
 
+import lt.baltictalents.pizzeria.Food.MenuItem;
 import lt.baltictalents.pizzeria.PizzeriaMain;
+import lt.baltictalents.pizzeria.maisto_meniu.DrinkMenuMethods;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
+
+    private static DrinkMenuMethods dMM = new DrinkMenuMethods();
+    private static List<MenuItem> foodListMenu;
+    private static List<MenuItem> drinkListMenu;
+
+    static {
+        try {
+            foodListMenu = readMenuTxt(false, "resources/Food");
+            drinkListMenu = readMenuTxt(true, "resources/Drinks");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void mainMenuMenu() {
         System.out.println("Menu\n");
-        System.out.println("1 -> Food");
-        System.out.println("2 -> Drinks");
-        System.out.println("3 -> Check");
-        System.out.println("4 -> Cancel order\n");
+        System.out.println("1 -> Add product");
+        System.out.println("2 -> Check");
+        System.out.println("3 -> Cancel order\n");
         System.out.print("Input number:");
     }
 
@@ -29,15 +45,12 @@ public class MenuChoices {
 
         switch (choices) {
             case 1:
-                foodMenu();
+//                productsMenu();
                 break;
             case 2:
-                drinksMenu();
-                break;
-            case 3:
                 System.out.println("Coming soon");
                 break;
-            case 4:
+            case 3:
                 System.out.println("Order is canceled. Thanks for choosing us!");
                 break;
             default:
@@ -53,7 +66,7 @@ public class MenuChoices {
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nFood");
-        readMenuTxt("resources/Food");
+//        foodListMenu = readMenuTxt(false, "resources/Food");
 
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("(6 -> Go back )");
@@ -94,13 +107,12 @@ public class MenuChoices {
         }
     }
 
-
     private static void drinksMenu() throws IOException {
 
         Scanner caseInput = new Scanner(System.in);
 
         System.out.println("\nDrinks");
-        readMenuTxt("resources/Drinks");
+//        drinkListMenu = readMenuTxt(true, "resources/Drinks");
 
         System.out.print("\nWhat would you like to order?\n");
         System.out.println("(6 -> Go back )");
@@ -114,6 +126,22 @@ public class MenuChoices {
         switch (choices) {
             case 1:
                 System.out.println("You ordered : Beer");
+//                dMM.addDrinks("Beer");
+                System.out.println("Added Beer");
+                dMM.addDrinkss("Beer", 1.20);
+//                dMM.addDrinkss("Beer", 1.20).toString();
+//                Set<String> beers = new TreeSet<>();
+//                int beerCount = 0;
+//                if(beerCount == 0){
+//                    beers.add(dMM.addDrinkss("Beer", 1.20).toString());
+//                }
+//                else if(beerCount > 0){
+//                    // ..cia prideti i gala
+//                }
+//                String[] beerTest = beers.toArray(new String[beers.size()]);
+//                System.out.println("beerTest" + Arrays.toString(beerTest));
+//
+//                PizzeriaMain.main(beerTest);
                 PizzeriaMain.main(null);
                 break;
             case 2:
