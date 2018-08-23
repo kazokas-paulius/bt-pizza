@@ -45,7 +45,7 @@ public class MenuChoices {
 
         switch (choices) {
             case 1:
-//                productsMenu();
+                productsMenu();
                 break;
             case 2:
                 System.out.println("Coming soon");
@@ -54,18 +54,16 @@ public class MenuChoices {
                 System.out.println("Order is canceled. Thanks for choosing us!");
                 break;
             default:
-
                 System.out.println("Invalid. Input different number");
 //                    caseInput.nextInt();
                 mainMenuChoices();
         }
-
     }
 
-    private static void foodMenu() throws IOException {
+    private static void productsMenu() throws IOException {
         Scanner caseInput = new Scanner(System.in);
 
-        System.out.println("\nFood");
+        System.out.println("\nInput a number");
 //        foodListMenu = readMenuTxt(false, "resources/Food");
 
         System.out.print("\nWhat would you like to oder?\n");
@@ -98,33 +96,6 @@ public class MenuChoices {
                 PizzeriaMain.main(null);
                 break;
             case 6:
-                System.out.println("Your order : ");
-                PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
-            default:
-                System.out.println("Invalid. Input different number");
-                foodMenu();
-//                caseInput.next(); //without cycle it ends program.
-        }
-    }
-
-    private static void drinksMenu() throws IOException {
-
-        Scanner caseInput = new Scanner(System.in);
-
-        System.out.println("\nDrinks");
-//        drinkListMenu = readMenuTxt(true, "resources/Drinks");
-
-        System.out.print("\nWhat would you like to order?\n");
-        System.out.println("(6 -> Go back )");
-
-        while (!caseInput.hasNextInt()) {
-            System.out.println("Invalid. Input different number");
-            caseInput.next();
-        }
-        int choices = caseInput.nextInt();
-
-        switch (choices) {
-            case 1:
                 System.out.println("You ordered : Beer");
 //                dMM.addDrinks("Beer");
                 System.out.println("Added Beer");
@@ -144,28 +115,28 @@ public class MenuChoices {
 //                PizzeriaMain.main(beerTest);
                 PizzeriaMain.main(null);
                 break;
-            case 2:
+            case 7:
                 System.out.println("You ordered : Root beer");
                 PizzeriaMain.main(null);
                 break;
-            case 3:
+            case 8:
                 System.out.println("You ordered : Sparkling water");
                 PizzeriaMain.main(null);
                 break;
-            case 4:
+            case 9:
                 System.out.println("You ordered : Still water");
                 PizzeriaMain.main(null);
                 break;
-            case 5:
+            case 10:
                 System.out.println("You ordered : Juice");
                 PizzeriaMain.main(null);
                 break;
-            case 6:
+            case 11:
                 System.out.println("Your order : ");
                 PizzeriaMain.main(null);// cia vietoj null bus perduodamas masyvas su pridetomis reiksmemis
             default:
                 System.out.println("Invalid. Input different number");
-                drinksMenu();
+                productsMenu();
         }
     }
 }
