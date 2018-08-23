@@ -62,14 +62,10 @@ public class MenuChoices {
 
     private static void productsMenu() throws IOException {
         Scanner caseInput = new Scanner(System.in);
-
-        System.out.println("\nInput a number");
-//        foodListMenu = readMenuTxt(false, "resources/Food");
-
         System.out.print("\nWhat would you like to oder?\n");
+        System.out.println("\nInput a number");
         System.out.println("(6 -> Go back )");
-
-        while (!caseInput.hasNextInt()) { //checks if its int
+        while (!caseInput.hasNextInt()) {
             System.out.println("Invalid. Input different number");
             caseInput.next();
         }
