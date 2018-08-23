@@ -1,21 +1,28 @@
 package lt.baltictalents.pizzeria.read_txt;
 
+import lt.baltictalents.pizzeria.Food.Drink;
+import lt.baltictalents.pizzeria.Food.Food;
+import lt.baltictalents.pizzeria.Food.MenuItem;
+
 import java.io.*;
 import java.util.*;
 
 public class TxtReader {
-    public static void readMenuTxt(String fPath) throws IOException{
+    public static List<MenuItem> readMenuTxt(boolean drink, String fPath) throws IOException{
         File fTarget = new File(fPath);
         BufferedReader bfr = new BufferedReader(new FileReader(fTarget));
         String fContent;
+        List<MenuItem> menuList = new ArrayList<>();
 
         while ((fContent = bfr.readLine()) != null) {
-            System.out.println(fContent);
             String[] mName = fContent.split("##");
-            List<String> mNames = Collections.singletonList(mName[1]);
-            List<String> mPrices = Collections.singletonList(mName[mName.length - 1]);
-            System.out.println(mNames);
-            System.out.println(mPrices);
+            if(drink){
+                menuList.add(new Drink(mName[1], Double.valueOf(mName[2])));
+            }else{
+                menuList.add(new Food(mName[1], Double.valueOf(mName[2])));
+            }
         }
+        System.out.println(menuList);
+        return menuList;
     }
 }
