@@ -1,11 +1,9 @@
 package lt.baltictalents.pizzeria;
 
 import lt.baltictalents.pizzeria.pizzeria_menus.MenuChoices;
-
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import static lt.baltictalents.pizzeria.pizzeria_menus.MenuChoices.mainMenuChoices;
 
 public class PizzeriaMain {

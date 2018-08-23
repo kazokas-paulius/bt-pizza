@@ -1,16 +1,12 @@
 package lt.baltictalents.pizzeria.pizzeria_menus;
 
 import lt.baltictalents.pizzeria.Food.MenuItem;
-import lt.baltictalents.pizzeria.maisto_meniu.DrinkMenuMethods;
-
 import java.io.IOException;
 import java.util.*;
-
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
 
-    private static DrinkMenuMethods dMM = new DrinkMenuMethods();
     private static List<MenuItem> foodListMenu;
     private static List<MenuItem> drinkListMenu;
     private static List<MenuItem> customOrder = new ArrayList<>();
@@ -48,13 +44,16 @@ public class MenuChoices {
 
         switch (choices) {
             case 1:
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 2:
-                System.out.println("Coming soon");
+                System.out.println("Your order");
+                System.out.println(getCustomOrder());
+                mainMenuMenu();
+                mainMenuChoices();
                 break;
             case 3:
-                System.out.println("Order is canceled. Thanks for choosing us!");
+                removeProductsFromOrder();
                 break;
             default:
                 System.out.println("Invalid. Input different number");
@@ -63,7 +62,7 @@ public class MenuChoices {
         }
     }
 
-    private static void productsMenu() throws IOException {
+    private static void addProductsToOrder() throws IOException {
         Scanner caseInput = new Scanner(System.in);
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("\nInput a number");
@@ -78,61 +77,61 @@ public class MenuChoices {
                 System.out.println("You ordered : Pizza");
                 customOrder.add(foodListMenu.get(0));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 2:
                 System.out.println("You ordered : Salad");
                 customOrder.add(foodListMenu.get(1));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 3:
                 System.out.println("You ordered : Tortilla");
                 customOrder.add(foodListMenu.get(2));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 4:
                 System.out.println("You ordered : Ice cream");
                 customOrder.add(foodListMenu.get(3));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 5:
                 System.out.println("You ordered : Soup");
                 customOrder.add(foodListMenu.get(4));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 6:
                 System.out.println("You ordered : Beer");
                 customOrder.add(drinkListMenu.get(0));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 7:
                 System.out.println("You ordered : Root beer");
                 customOrder.add(drinkListMenu.get(1));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 8:
                 System.out.println("You ordered : Sparkling water");
                 customOrder.add(drinkListMenu.get(2));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 9:
                 System.out.println("You ordered : Still water");
                 customOrder.add(drinkListMenu.get(3));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 10:
                 System.out.println("You ordered : Juice");
                 customOrder.add(drinkListMenu.get(4));
                 System.out.println(customOrder);
-                productsMenu();
+                addProductsToOrder();
                 break;
             case 11:
                 System.out.println("Go Back to Menu");
@@ -142,8 +141,40 @@ public class MenuChoices {
                 System.out.println(getCustomOrder());
             default:
                 System.out.println("Invalid. Input different number");
-                productsMenu();
+                mainMenuMenu();
+                addProductsToOrder();
         }
     }
+
+    private static void removeProductsFromOrder(){
+        System.out.println(getCustomOrder());
+
+        Scanner caseInput = new Scanner(System.in);
+        System.out.println("Enter product name you wish to be removed");
+        String removeWish = caseInput.next();
+
+        for(MenuItem mi : customOrder){
+            if(removeWish.equals(mi.getName())){
+                String wishName = removeWish;
+                System.out.println("Ar yra toks produktas: " + removeWish.equals(mi.getName()));
+                System.out.println("wishName: " + wishName);
+                int wishIndex = customOrder.indexOf(wishName); //cia meta -1 exeptiona, nes tipo neranda tokio elemento
+                customOrder.remove(foodListMenu.get(wishIndex));
+            }
+            System.out.println("mi elementai: " + mi);
+        }
+        System.out.println(customOrder);
+    }
+
+//    private static boolean checkDuplicateListProduct(List<MenuItem> targetList){
+//        Set temporarySet = new HashSet();
+//        for(MenuItem mi : targetList){
+//            if(!temporarySet.add(mi)){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
 }
 
