@@ -1,8 +1,10 @@
 package lt.baltictalents.pizzeria.pizzeria_menus;
 
 import lt.baltictalents.pizzeria.Food.MenuItem;
+
 import java.io.IOException;
 import java.util.*;
+
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
@@ -54,9 +56,10 @@ public class MenuChoices {
                 break;
             case 3:
                 removeProductsFromOrder();
+                mainMenuChoices();
                 break;
             default:
-                System.out.println("Invalid. Input different number");
+                System.out.print("Invalid. Input different number");
 //                caseInput.nextInt();
                 mainMenuChoices();
         }
@@ -134,11 +137,9 @@ public class MenuChoices {
                 addProductsToOrder();
                 break;
             case 11:
-                System.out.println("Go Back to Menu");
+                mainMenuMenu();
                 mainMenuChoices();
-            case 12:
-                getCustomOrder();
-                System.out.println(getCustomOrder());
+                break;
             default:
                 System.out.println("Invalid. Input different number");
                 mainMenuMenu();
@@ -146,35 +147,56 @@ public class MenuChoices {
         }
     }
 
-    private static void removeProductsFromOrder(){
+    private static void removeProductsFromOrder() throws IOException {
         System.out.println(getCustomOrder());
 
         Scanner caseInput = new Scanner(System.in);
-        System.out.println("Enter product name you wish to be removed");
+        System.out.print("Enter product name you wish to be removed (example: Salad): ");
         String removeWish = caseInput.next();
 
-        for(MenuItem mi : customOrder){
-            if(removeWish.equals(mi.getName())){
-                String wishName = removeWish;
-                System.out.println("Ar yra toks produktas: " + removeWish.equals(mi.getName()));
-                System.out.println("wishName: " + wishName);
-                int wishIndex = customOrder.indexOf(wishName); //cia meta -1 exeptiona, nes tipo neranda tokio elemento
-                customOrder.remove(foodListMenu.get(wishIndex));
-            }
-            System.out.println("mi elementai: " + mi);
-        }
-        System.out.println(customOrder);
-    }
+        Iterator<MenuItem> itt = customOrder.iterator();
 
-//    private static boolean checkDuplicateListProduct(List<MenuItem> targetList){
-//        Set temporarySet = new HashSet();
-//        for(MenuItem mi : targetList){
-//            if(!temporarySet.add(mi)){
-//                return true;
+        // cia nekreipkit demesio. In progress :)
+//        while(itt.hasNext()){
+//            MenuItem mi = itt.next();
+//            if(removeWish.equals(mi.getName())){
+//                if(checkDuplicate(customOrder)){
+//                    System.out.println("Duplicates detected");
+//                    // TODO: check duplicate indexs and with userInput delete choosen one
+//                    System.out.println(mi);
+//                }else{
+//                    System.out.println("Removed: + " + itt.toString());
+//                    itt.remove();
+//                }
 //            }
 //        }
-//        return false;
-//    }
+
+        //#1 (sitas aiskiau)
+        while(itt.hasNext()){
+            MenuItem mi = itt.next();
+            if(removeWish.equals(mi.getName())){
+                itt.remove();
+            }
+        }
+
+        //#2 (sitas sutrumpintas, bet velnias zino cia)
+        //customOrder.removeIf(mi -> removeWish.equals(mi.getName()));
+
+        System.out.println(customOrder);
+        mainMenuMenu();
+        mainMenuChoices();
+    }
+
+    private static boolean checkDuplicate(List<MenuItem> targetList){
+        HashSet<MenuItem> set = new HashSet<>();
+        for(int i = 0; i < targetList.size(); i++){
+            boolean status = set.add(targetList.get(i));
+            if(!status){
+                return status;
+            }
+        }
+        return true;
+    }
 
 }
 
