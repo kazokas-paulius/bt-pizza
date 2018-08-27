@@ -1,12 +1,18 @@
 package lt.baltictalents.pizzeria.Food;
 
 public abstract class MenuItem {
+    private final int index;
     private final String name;
     private final double price;
 
-    public MenuItem(String name, double price) {
+    MenuItem(int index, String name, double price) {
+        this.index = index;
         this.name = name;
         this.price = price;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     public String getName() {
@@ -19,9 +25,10 @@ public abstract class MenuItem {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                "\n" + '}';
+        return "\n" +
+                index + "->" +
+                name +
+                " ||" + " price : " + price
+                ;
     }
 }
