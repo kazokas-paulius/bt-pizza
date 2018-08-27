@@ -152,51 +152,23 @@ public class MenuChoices {
 
         Scanner caseInput = new Scanner(System.in);
         System.out.print("Enter product name you wish to be removed (example: Salad): ");
-        String removeWish = caseInput.next();
+        String removeWish = caseInput.nextLine();
+        System.out.println(removeWish);
 
         Iterator<MenuItem> itt = customOrder.iterator();
 
-        // cia nekreipkit demesio. In progress :)
-//        while(itt.hasNext()){
-//            MenuItem mi = itt.next();
-//            if(removeWish.equals(mi.getName())){
-//                if(checkDuplicate(customOrder)){
-//                    System.out.println("Duplicates detected");
-//                    // TODO: check duplicate indexs and with userInput delete choosen one
-//                    System.out.println(mi);
-//                }else{
-//                    System.out.println("Removed: + " + itt.toString());
-//                    itt.remove();
-//                }
-//            }
-//        }
-
-        //#1 (sitas aiskiau)
-        while(itt.hasNext()){
+        while (itt.hasNext()) {
             MenuItem mi = itt.next();
-            if(removeWish.equals(mi.getName())){
+            if (removeWish.equals(mi.getName())) {
                 itt.remove();
+                System.out.println("Removed: " + mi.getName());
+                break;
             }
         }
-
-        //#2 (sitas sutrumpintas, bet velnias zino cia)
-        //customOrder.removeIf(mi -> removeWish.equals(mi.getName()));
 
         System.out.println(customOrder);
         mainMenuMenu();
         mainMenuChoices();
     }
-
-    private static boolean checkDuplicate(List<MenuItem> targetList){
-        HashSet<MenuItem> set = new HashSet<>();
-        for(int i = 0; i < targetList.size(); i++){
-            boolean status = set.add(targetList.get(i));
-            if(!status){
-                return status;
-            }
-        }
-        return true;
-    }
-
 }
 

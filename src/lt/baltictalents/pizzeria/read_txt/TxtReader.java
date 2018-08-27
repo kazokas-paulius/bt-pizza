@@ -22,6 +22,7 @@ public class TxtReader {
             }
         }
         System.out.println(menuList);
+        bfr.close();
         return menuList;
     }
 }
