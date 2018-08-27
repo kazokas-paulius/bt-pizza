@@ -1,5 +1,6 @@
 package lt.baltictalents.pizzeria;
 
+import lt.baltictalents.pizzeria.DataTime.DataTime;
 import lt.baltictalents.pizzeria.pizzeria_menus.MenuChoices;
 import java.io.*;
 import java.time.LocalDateTime;
@@ -9,13 +10,9 @@ import static lt.baltictalents.pizzeria.pizzeria_menus.MenuChoices.mainMenuChoic
 public class PizzeriaMain {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(getDateTime());
+       // System.out.println(DataTime.getDateTime());
         MenuChoices.mainMenuMenu();
         mainMenuChoices();
     }
-    private static String getDateTime () {
 
-        return LocalDateTime.now().plusMinutes(10).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-    }
 }
