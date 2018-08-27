@@ -30,7 +30,16 @@ public class MenuChoices {
         System.out.println("Menu\n");
         System.out.println("1 -> Add product");
         System.out.println("2 -> Check");
-        System.out.println("3 -> Cancel order\n");
+        System.out.println("3 -> Order Options\n");
+        System.out.print("Input number:");
+    }
+
+    private static void orderMenuMenu(){
+        System.out.println("\n1 -> View order");
+        System.out.println("2 -> Remove item from order");
+        System.out.println("3 -> Confirm order");
+        System.out.println("4 -> Cancel order");
+        System.out.println("5 -> Back to menu");
         System.out.print("Input number:");
     }
 
@@ -55,13 +64,54 @@ public class MenuChoices {
                 mainMenuChoices();
                 break;
             case 3:
-                removeProductsFromOrder();
-                mainMenuChoices();
+                orderMenuMenu();
+                orderMenuChoices();
                 break;
             default:
                 System.out.print("Invalid. Input different number");
 //                caseInput.nextInt();
                 mainMenuChoices();
+        }
+    }
+
+    private static void orderMenuChoices() throws IOException{
+
+        Scanner orderInput = new Scanner(System.in);
+
+        while (!orderInput.hasNextInt()) {
+            System.out.println("Invalid. Input different number");
+            orderInput.next();
+        }
+
+        int choices = orderInput.nextInt();
+
+        switch (choices){
+            case 1:
+                System.out.println("View Order");
+                System.out.println(getCustomOrder());
+                orderMenuMenu();
+                orderMenuChoices();
+                break;
+            case 2:
+                System.out.println("Remove Item from Order");
+                removeProductsFromOrder();
+                orderMenuChoices();
+                break;
+            case 3:
+                System.out.println("Confirm Order");
+//                confirmOrder();
+                orderMenuChoices();
+                break;
+            case 4:
+                System.out.println("Cancel Order");
+                cancelOrder();
+                orderMenuChoices();
+                break;
+            case 5:
+                System.out.println("Back to Menu");
+                mainMenuMenu();
+                mainMenuChoices();
+                break;
         }
     }
 
@@ -167,8 +217,18 @@ public class MenuChoices {
         }
 
         System.out.println(customOrder);
-        mainMenuMenu();
-        mainMenuChoices();
+        orderMenuChoices();
+        orderMenuChoices();
+    }
+
+    private static void cancelOrder() throws IOException{
+        System.out.println("Your order canceled");
+
+        customOrder.clear();
+
+        System.out.println(customOrder);
+        orderMenuMenu();
+        orderMenuChoices();
     }
 }
 
