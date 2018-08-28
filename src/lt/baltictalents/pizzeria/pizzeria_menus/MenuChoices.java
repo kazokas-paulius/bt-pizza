@@ -95,16 +95,19 @@ public class MenuChoices {
             case 2:
                 System.out.println("Remove Item from Order");
                 removeProductsFromOrder();
+                orderMenuMenu();
                 orderMenuChoices();
                 break;
             case 3:
                 System.out.println("Confirm Order");
 //                confirmOrder();
+                orderMenuMenu();
                 orderMenuChoices();
                 break;
             case 4:
                 System.out.println("Cancel Order");
                 cancelOrder();
+                orderMenuMenu();
                 orderMenuChoices();
                 break;
             case 5:
@@ -217,7 +220,7 @@ public class MenuChoices {
         }
 
         System.out.println(customOrder);
-        orderMenuChoices();
+        orderMenuMenu();
         orderMenuChoices();
     }
 
