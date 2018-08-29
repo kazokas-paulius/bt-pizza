@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class DataTime {
     public static String getDateTime () {
 
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-                + "\n order will expire in: " +
+        return "\n" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                + "\norder will expire in 10 minutes\n" +
                 LocalDateTime.now().plusMinutes(10).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
     }

@@ -10,7 +10,6 @@ import static lt.baltictalents.pizzeria.pizzeria_menus.MenuChoices.mainMenuChoic
 public class PizzeriaMain {
 
     public static void main(String[] args) throws IOException {
-       // System.out.println(DataTime.getDateTime());
         MenuChoices.mainMenuMenu();
         mainMenuChoices();
     }
