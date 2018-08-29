@@ -1,10 +1,16 @@
 package lt.baltictalents.pizzeria.pizzeria_menus;
 
+import lt.baltictalents.pizzeria.CheckOut.Check;
+import lt.baltictalents.pizzeria.DataTime.DataTime;
 import lt.baltictalents.pizzeria.Food.MenuItem;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import static lt.baltictalents.pizzeria.CheckOut.Check.orderPrice;
+import static lt.baltictalents.pizzeria.Utility.ValidationProcesses.validInput;
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
@@ -51,19 +57,21 @@ public class MenuChoices {
             System.out.println("Invalid. Input different number");
             caseInput.next();
         }
-        int choices = caseInput.nextInt();
+        String choices = caseInput.nextLine();
+
+        validInput(true, false, choices);
 
         switch (choices) {
-            case 1:
+            case "1":
                 addProductsToOrder();
                 break;
-            case 2:
+            case "2":
                 System.out.println("Your order");
                 System.out.println(getCustomOrder());
                 mainMenuMenu();
                 mainMenuChoices();
                 break;
-            case 3:
+            case "3":
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
@@ -74,7 +82,7 @@ public class MenuChoices {
         }
     }
 
-    private static void orderMenuChoices() throws IOException{
+    public static void orderMenuChoices() throws IOException {
 
         Scanner orderInput = new Scanner(System.in);
 
@@ -83,34 +91,34 @@ public class MenuChoices {
             orderInput.next();
         }
 
-        int choices = orderInput.nextInt();
+        String choices = orderInput.nextLine();
 
-        switch (choices){
-            case 1:
+        validInput(false, false, choices);
+
+        switch (choices) {
+            case "1":
                 System.out.println("View Order");
                 System.out.println(getCustomOrder());
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
-            case 2:
+            case "2":
                 System.out.println("Remove Item from Order");
                 removeProductsFromOrder();
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
-            case 3:
+            case "3":
                 System.out.println("Confirm Order");
-//                confirmOrder();
-                orderMenuMenu();
-                orderMenuChoices();
+                confirmOrder();
                 break;
-            case 4:
+            case "4":
                 System.out.println("Cancel Order");
                 cancelOrder();
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
-            case 5:
+            case "5":
                 System.out.println("Back to Menu");
                 mainMenuMenu();
                 mainMenuChoices();
@@ -118,7 +126,7 @@ public class MenuChoices {
         }
     }
 
-    private static void addProductsToOrder() throws IOException {
+    public static void addProductsToOrder() throws IOException {
         Scanner caseInput = new Scanner(System.in);
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("\nInput a number");
@@ -127,69 +135,70 @@ public class MenuChoices {
             System.out.println("Invalid. Input different number");
             caseInput.next();
         }
-        int choices = caseInput.nextInt();
+        String choices = caseInput.nextLine();
+        validInput(false, true, choices);
         switch (choices) {
-            case 1:
+            case "1":
                 System.out.println("You ordered : Pizza");
                 customOrder.add(foodListMenu.get(0));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 2:
+            case "2":
                 System.out.println("You ordered : Salad");
                 customOrder.add(foodListMenu.get(1));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 3:
+            case "3":
                 System.out.println("You ordered : Tortilla");
                 customOrder.add(foodListMenu.get(2));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 4:
+            case "4":
                 System.out.println("You ordered : Ice cream");
                 customOrder.add(foodListMenu.get(3));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 5:
+            case "5":
                 System.out.println("You ordered : Soup");
                 customOrder.add(foodListMenu.get(4));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 6:
+            case "6":
                 System.out.println("You ordered : Beer");
                 customOrder.add(drinkListMenu.get(0));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 7:
+            case "7":
                 System.out.println("You ordered : Root beer");
                 customOrder.add(drinkListMenu.get(1));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 8:
+            case "8":
                 System.out.println("You ordered : Sparkling water");
                 customOrder.add(drinkListMenu.get(2));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 9:
+            case "9":
                 System.out.println("You ordered : Still water");
                 customOrder.add(drinkListMenu.get(3));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 10:
+            case "10":
                 System.out.println("You ordered : Juice");
                 customOrder.add(drinkListMenu.get(4));
                 System.out.println(customOrder);
                 addProductsToOrder();
                 break;
-            case 11:
+            case "11":
                 mainMenuMenu();
                 mainMenuChoices();
                 break;
@@ -224,7 +233,7 @@ public class MenuChoices {
         orderMenuChoices();
     }
 
-    private static void cancelOrder() throws IOException{
+    private static void cancelOrder() throws IOException {
         System.out.println("Your order canceled");
 
         customOrder.clear();
@@ -233,5 +242,21 @@ public class MenuChoices {
         orderMenuMenu();
         orderMenuChoices();
     }
-}
 
+    private static void confirmOrder() {
+        System.out.println(DataTime.getDateTime());
+
+        System.out.println("Order confirmed\n");
+        System.out.println(customOrder);
+
+        Check.sortOrderProductName(customOrder);
+
+        System.out.println("Sorted by order product names\n");
+        System.out.println(customOrder);
+
+        System.out.println("Order total price: " + orderPrice(customOrder));
+
+        System.exit(0);
+    }
+
+}
