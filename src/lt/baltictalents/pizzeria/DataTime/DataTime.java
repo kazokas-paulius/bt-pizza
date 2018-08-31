@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 public class DataTime {
     public static String getDateTime () {
 
-        return "\n" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-                + "\norder will expire in 10 minutes\n" +
-                LocalDateTime.now().plusMinutes(10).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String expireTime = LocalDateTime.now().plusMinutes(10).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        return "\n" + currentTime + "\norder will expire in 10 minutes\n" + expireTime;
 
     }
-
 }
