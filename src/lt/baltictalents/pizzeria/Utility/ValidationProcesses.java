@@ -14,7 +14,7 @@ public class ValidationProcesses {
         Matcher matcher = pattern.matcher(input);
         boolean found = matcher.find();
 
-        while (found == true) {
+        while (found) {
             if(mainMenu && !productInput){
                 System.out.println("Given value is invalid. Input one of given numbers");
                 mainMenuChoices();
@@ -23,7 +23,7 @@ public class ValidationProcesses {
                 System.out.println("Given value is invalid. Input one of given numbers");
                 orderMenuChoices();
             }
-            else if(!mainMenu && productInput){
+            else if(!mainMenu){
                 System.out.println("Given value is invalid. Input one of given numbers");
                 addProductsToOrder();
             }

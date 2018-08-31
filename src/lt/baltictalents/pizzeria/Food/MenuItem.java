@@ -1,5 +1,6 @@
 package lt.baltictalents.pizzeria.Food;
 
+
 public abstract class MenuItem {
     private final int index;
     private final String name;
@@ -23,8 +24,10 @@ public abstract class MenuItem {
         return price;
     }
 
+
     @Override
     public String toString() {
+
         return "\n" +
                 index + "->" +
                 name +

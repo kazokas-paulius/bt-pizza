@@ -1,3 +1,4 @@
+
 package lt.baltictalents.pizzeria.pizzeria_menus;
 
 import lt.baltictalents.pizzeria.CheckOut.Check;
@@ -6,8 +7,7 @@ import lt.baltictalents.pizzeria.Food.MenuItem;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import static lt.baltictalents.pizzeria.CheckOut.Check.orderPrice;
 import static lt.baltictalents.pizzeria.Utility.ValidationProcesses.validInput;
@@ -19,11 +19,12 @@ public class MenuChoices {
     private static List<MenuItem> drinkListMenu;
     private static List<MenuItem> customOrder = new ArrayList<>();
 
-    public static List<MenuItem> getCustomOrder() {
+    private static List<MenuItem> getCustomOrder() {
         return customOrder;
     }
 
     static {
+        System.out.println("\n--------Menu--------");
         try {
             foodListMenu = readMenuTxt(false, "resources/Food");
             drinkListMenu = readMenuTxt(true, "resources/Drinks");
@@ -33,14 +34,15 @@ public class MenuChoices {
     }
 
     public static void mainMenuMenu() {
-        System.out.println("Menu\n");
+        System.out.println("\n------------------\n");
+        System.out.println("What would you like to do ?\n");
         System.out.println("1 -> Add product");
         System.out.println("2 -> Check");
         System.out.println("3 -> Order Options\n");
         System.out.print("Input number:");
     }
 
-    private static void orderMenuMenu(){
+    private static void orderMenuMenu() {
         System.out.println("\n1 -> View order");
         System.out.println("2 -> Remove item from order");
         System.out.println("3 -> Confirm order");
@@ -131,6 +133,7 @@ public class MenuChoices {
         System.out.print("\nWhat would you like to oder?\n");
         System.out.println("\nInput a number");
         System.out.println("11 -> Go Back");
+        System.out.println("12 -> See menu");
         while (!caseInput.hasNextInt()) {
             System.out.println("Invalid. Input different number");
             caseInput.next();
@@ -202,9 +205,19 @@ public class MenuChoices {
                 mainMenuMenu();
                 mainMenuChoices();
                 break;
+            case "12":
+
+                System.out.println("\n--------Menu--------");
+                try {
+                    foodListMenu = readMenuTxt(false, "resources/Food");
+                    drinkListMenu = readMenuTxt(true, "resources/Drinks");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                addProductsToOrder();
+                break;
             default:
                 System.out.println("Invalid. Input different number");
-                mainMenuMenu();
                 addProductsToOrder();
         }
     }
