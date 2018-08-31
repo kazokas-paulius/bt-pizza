@@ -19,9 +19,9 @@ public class TxtReader {
         while ((fContent = bfr.readLine()) != null) {
             String[] mName = fContent.split("##");
             if (drink) {
-                menuList.add(new Drink(Integer.valueOf(mName[0]), mName[1], Double.valueOf(mName[2])));
+                menuList.add(new Drink((mName[0]), mName[1], Double.valueOf(mName[2])));
             } else {
-                menuList.add(new Food(Integer.valueOf(mName[0]), mName[1], Double.valueOf(mName[2])));
+                menuList.add(new Food((mName[0]), mName[1], Double.valueOf(mName[2])));
             }
         }
         System.out.println(menuList.toString().replace("[", "").replace("]", "").replace(",", ""));

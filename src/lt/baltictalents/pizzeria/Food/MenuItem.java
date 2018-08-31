@@ -2,17 +2,17 @@ package lt.baltictalents.pizzeria.Food;
 
 
 public abstract class MenuItem {
-    private final int index;
+    private final String index;
     private final String name;
     private final double price;
 
-    MenuItem(int index, String name, double price) {
+    MenuItem(String index, String name, double price) {
         this.index = index;
         this.name = name;
         this.price = price;
     }
 
-    public int getIndex() {
+    public String getIndex() {
         return index;
     }
 

@@ -37,8 +37,7 @@ public class MenuChoices {
         System.out.println("\n------------------\n");
         System.out.println("What would you like to do ?\n");
         System.out.println("1 -> Add product");
-        System.out.println("2 -> Check");
-        System.out.println("3 -> Order Options\n");
+        System.out.println("2 -> Order Options\n");
         System.out.print("Input number:");
     }
 
@@ -68,18 +67,11 @@ public class MenuChoices {
                 addProductsToOrder();
                 break;
             case "2":
-                System.out.println("Your order");
-                System.out.println(getCustomOrder());
-                mainMenuMenu();
-                mainMenuChoices();
-                break;
-            case "3":
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
             default:
                 System.out.print("Invalid. Input different number");
-//                caseInput.nextInt();
                 mainMenuChoices();
         }
     }
@@ -100,7 +92,7 @@ public class MenuChoices {
         switch (choices) {
             case "1":
                 System.out.println("View Order");
-                System.out.println(getCustomOrder());
+                System.out.println(getCustomOrder().toString().replace("[", "").replace("]", "").replace(",", ""));
                 orderMenuMenu();
                 orderMenuChoices();
                 break;
@@ -144,61 +136,61 @@ public class MenuChoices {
             case "1":
                 System.out.println("You ordered : Pizza");
                 customOrder.add(foodListMenu.get(0));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "2":
                 System.out.println("You ordered : Salad");
                 customOrder.add(foodListMenu.get(1));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "3":
                 System.out.println("You ordered : Tortilla");
                 customOrder.add(foodListMenu.get(2));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "4":
                 System.out.println("You ordered : Ice cream");
                 customOrder.add(foodListMenu.get(3));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "5":
                 System.out.println("You ordered : Soup");
                 customOrder.add(foodListMenu.get(4));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "6":
                 System.out.println("You ordered : Beer");
                 customOrder.add(drinkListMenu.get(0));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "7":
                 System.out.println("You ordered : Root beer");
                 customOrder.add(drinkListMenu.get(1));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "8":
                 System.out.println("You ordered : Sparkling water");
                 customOrder.add(drinkListMenu.get(2));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "9":
                 System.out.println("You ordered : Still water");
                 customOrder.add(drinkListMenu.get(3));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "10":
                 System.out.println("You ordered : Juice");
                 customOrder.add(drinkListMenu.get(4));
-                System.out.println(customOrder);
+                System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
                 addProductsToOrder();
                 break;
             case "11":
@@ -223,10 +215,10 @@ public class MenuChoices {
     }
 
     private static void removeProductsFromOrder() throws IOException {
-        System.out.println(getCustomOrder());
+        System.out.println(getCustomOrder().toString().replace("[", "").replace("]", "").replace(",", "")+ "\n");
 
         Scanner caseInput = new Scanner(System.in);
-        System.out.print("Enter product name you wish to be removed (example: Salad): ");
+        System.out.print("Enter product number you wish to remove");
         String removeWish = caseInput.nextLine();
         System.out.println(removeWish);
 
@@ -234,14 +226,14 @@ public class MenuChoices {
 
         while (itt.hasNext()) {
             MenuItem mi = itt.next();
-            if (removeWish.equals(mi.getName())) {
+            if (removeWish.equals(mi.getIndex())) {
                 itt.remove();
                 System.out.println("Removed: " + mi.getName());
                 break;
             }
         }
 
-        System.out.println(customOrder);
+        System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
         orderMenuMenu();
         orderMenuChoices();
     }
@@ -251,7 +243,7 @@ public class MenuChoices {
 
         customOrder.clear();
 
-        System.out.println(customOrder);
+        System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
         orderMenuMenu();
         orderMenuChoices();
     }
@@ -260,12 +252,12 @@ public class MenuChoices {
         System.out.println(DataTime.getDateTime());
 
         System.out.println("Order confirmed\n");
-        System.out.println(customOrder);
+        System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
 
         Check.sortOrderProductName(customOrder);
 
         System.out.println("Sorted by order product names\n");
-        System.out.println(customOrder);
+        System.out.println(customOrder.toString().replace("[", "").replace("]", "").replace(",", ""));
 
         System.out.println("Order total price: " + orderPrice(customOrder));
 
