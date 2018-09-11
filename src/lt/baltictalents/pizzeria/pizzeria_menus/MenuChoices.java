@@ -10,7 +10,7 @@ import java.util.*;
 
 
 import static lt.baltictalents.pizzeria.CheckOut.Check.orderPrice;
-import static lt.baltictalents.pizzeria.Utility.ValidationProcesses.validInput;
+import static lt.baltictalents.pizzeria.utility.ValidationProcesses.validInput;
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
 
 public class MenuChoices {
@@ -24,13 +24,25 @@ public class MenuChoices {
     }
 
     static {
-        System.out.println("\n--------Menu--------");
         try {
             foodListMenu = readMenuTxt(false, "resources/Food");
             drinkListMenu = readMenuTxt(true, "resources/Drinks");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        showMenu();
+    }
+
+    private static void showMenu(){
+        System.out.println("\n--------Menu--------");
+        System.out.println(foodListMenu.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", ""));
+        System.out.println(drinkListMenu.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", ""));
     }
 
     public static void mainMenuMenu() {
@@ -198,14 +210,8 @@ public class MenuChoices {
                 mainMenuChoices();
                 break;
             case "12":
-
-                System.out.println("\n--------Menu--------");
-                try {
-                    foodListMenu = readMenuTxt(false, "resources/Food");
-                    drinkListMenu = readMenuTxt(true, "resources/Drinks");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                showMenu();
+                System.out.println();
                 addProductsToOrder();
                 break;
             default:
