@@ -24,7 +24,6 @@ public class TxtReader {
                 menuList.add(new Food((mName[0]), mName[1], Double.valueOf(mName[2])));
             }
         }
-        System.out.println(menuList.toString().replace("[", "").replace("]", "").replace(",", ""));
         bfr.close();
         return menuList;
     }

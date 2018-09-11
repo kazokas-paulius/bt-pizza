@@ -1,4 +1,4 @@
-package lt.baltictalents.pizzeria.Utility;
+package lt.baltictalents.pizzeria.utility;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
