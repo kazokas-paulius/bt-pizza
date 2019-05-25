@@ -8,7 +8,6 @@ import lt.baltictalents.pizzeria.Food.MenuItem;
 import java.io.IOException;
 import java.util.*;
 
-
 import static lt.baltictalents.pizzeria.CheckOut.Check.orderPrice;
 import static lt.baltictalents.pizzeria.utility.ValidationProcesses.validInput;
 import static lt.baltictalents.pizzeria.read_txt.TxtReader.readMenuTxt;
